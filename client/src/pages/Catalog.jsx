@@ -1,7 +1,7 @@
-import React from "react";
+import Helmet from "../components/Helmet";
 
 function Catalog() {
-  return <div>Catalog</div>;
+  return <Helmet title="San pham">San pham</Helmet>;
 }
 
 export default Catalog;

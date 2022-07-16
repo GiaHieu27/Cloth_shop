@@ -1,7 +1,7 @@
-import React from "react";
+import Helmet from "../components/Helmet";
 
 function Home() {
-  return <div>Home</div>;
+  return <Helmet title="Trang chu">Home</Helmet>;
 }
 
 export default Home;
