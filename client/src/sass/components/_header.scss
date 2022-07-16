@@ -26,6 +26,7 @@
   &.shrink {
     height: $header-shrink-height;
     box-shadow: $box-shadow;
+    z-index: 100;
   }
 
   &_menu {
