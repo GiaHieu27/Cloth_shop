@@ -12,14 +12,14 @@ function App() {
     <>
       <Header />
       <div className="container">
-        <div className="main">
+        <main className="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/product" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
-        </div>
+        </main>
       </div>
       <Footer />
     </>

@@ -51,7 +51,7 @@ function Header() {
   };
 
   return (
-    <div className="header" ref={headerRef}>
+    <header className="header" ref={headerRef}>
       <div className="container">
         <div className="header_logo">
           <Link to="/">
@@ -102,7 +102,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

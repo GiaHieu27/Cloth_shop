@@ -3,9 +3,9 @@ export function Section(props) {
 }
 
 export function SectionTitle(props) {
-  return <section className="section_title">{props.children}</section>;
+  return <div className="section_title">{props.children}</div>;
 }
 
 export function SectionBody(props) {
-  return <section className="section_body">{props.children}</section>;
+  return <div className="section_body">{props.children}</div>;
 }
