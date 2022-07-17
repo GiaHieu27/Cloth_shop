@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Button from "../Button";
 
 function SliderItem({ item, active }) {
   return (
@@ -12,7 +13,13 @@ function SliderItem({ item, active }) {
         </div>
         <div className="slider_item_info_btn">
           <Link to={item.path}>
-            <button>Xem chi tiet</button>
+            <Button
+              backgroundColor={item.color}
+              icon="bx bx-cart"
+              animate={true}
+            >
+              Xem chi tiet
+            </Button>
           </Link>
         </div>
       </div>

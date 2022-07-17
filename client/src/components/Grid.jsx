@@ -6,8 +6,8 @@ function Grid(props) {
   };
 
   const col = props.col ? `grid-col-${props.col}` : "";
-  const mdCol = props.mdCol ? `grid-col-md${props.mdCol}` : "";
-  const smCol = props.smCol ? `grid-col-sm${props.smCol}` : "";
+  const mdCol = props.mdCol ? `grid-col-md-${props.mdCol}` : "";
+  const smCol = props.smCol ? `grid-col-sm-${props.smCol}` : "";
 
   return (
     <div className={`grid ${col} ${smCol} ${mdCol}`} style={style}>
