@@ -15,7 +15,7 @@ function ProductCard({ img01, img02, name, price, slug }) {
         <div className="product-card_price">
           {numberWithCommas(price)}
           <span className="product-card_price_old">
-            <del>{numberWithCommas(400000)}</del>
+            <del>{numberWithCommas(389000)}</del>
           </span>
         </div>
       </Link>
