@@ -18,7 +18,7 @@ function Home() {
       <Slider
         data={heroSliderData}
         control={true}
-        auto={true}
+        auto={false}
         timeOutt={5000}
       />
 
