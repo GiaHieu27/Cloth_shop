@@ -43,7 +43,7 @@ function Home() {
                 img01={product.image01}
                 img02={product.image02}
                 name={product.title}
-                price={product.price}
+                price={Number(product.price)}
                 slug={product.slug}
               />
             ))}
