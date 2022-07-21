@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import Helmet from "../components/Helmet";
 import CheckBox from "../components/CheckBox";
@@ -20,6 +20,11 @@ function Catalog() {
 
   const [products, setProducts] = useState(productList);
   const [filter, setFilter] = useState(initFilters);
+
+  const filterRef = useRef(null);
+  const showFilter = () => {
+    filterRef.current.classList.toggle("active");
+  };
 
   const filterSelect = (type, checked, item) => {
     if (checked) {
@@ -89,7 +94,10 @@ function Catalog() {
   return (
     <Helmet title="San pham">
       <div className="catalog">
-        <div className="catalog_filter">
+        <div className="catalog_filter" ref={filterRef}>
+          <div className="catalog_filter_close" onClick={() => showFilter()}>
+            <i className="bx bx-left-arrow-alt"></i>
+          </div>
           <div className="catalog_filter_widget">
             <div className="catalog_filter_widget_title">danh muc san pham</div>
             <div className="catalog_filter_widget_content">
@@ -148,6 +156,12 @@ function Catalog() {
               </Button>
             </div>
           </div>
+        </div>
+
+        <div className="catalog_filter_toggle">
+          <Button size="sm" onClick={() => showFilter()}>
+            bo loc
+          </Button>
         </div>
 
         <div className="catalog_content">

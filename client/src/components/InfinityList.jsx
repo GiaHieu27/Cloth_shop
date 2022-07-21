@@ -14,7 +14,6 @@ function InfinityList({ data }) {
   const listRef = useRef(null);
 
   useEffect(() => {
-    console.log(data);
     setProduct(data.slice(0, preLoad));
     setIndex(1);
   }, [data]);
@@ -25,7 +24,6 @@ function InfinityList({ data }) {
         window.scrollY + window.innerHeight >=
         listRef.current.clientHeight + listRef.current.offsetTop + 200
       ) {
-        console.log("cddvd");
         setLoad(true);
       }
     });
