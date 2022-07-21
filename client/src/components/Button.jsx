@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function Button({ backgroundColor, icon, onclick, ...props }) {
+function Button({ backgroundColor, icon, ...props }) {
   const bg = backgroundColor ? `bg-${backgroundColor}` : "bg-main";
   const size = props.size ? "btn-" : "";
   const animate = props.animate ? "btn-animate" : "";
@@ -8,7 +8,7 @@ function Button({ backgroundColor, icon, onclick, ...props }) {
   return (
     <button
       className={`btn ${bg} ${animate} ${size} `}
-      onClick={onclick ? onclick() : null}
+      onClick={props.onClick ? () => props.onClick() : null}
     >
       <span className="btn_txt">{props.children}</span>
       {icon ? (

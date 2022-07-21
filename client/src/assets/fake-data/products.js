@@ -1,6 +1,6 @@
 import product_01_image_01 from "../images/products/product-01 (1).jpg";
 import product_01_image_02 from "../images/products/product-01 (2).jpg";
-// import product_01_image_03  '../images/products/product-01 (3).jpg')
+ 
 import product_02_image_01 from "../images/products/product-02 (1).jpg";
 import product_02_image_02 from "../images/products/product-02 (2).jpg";
 
