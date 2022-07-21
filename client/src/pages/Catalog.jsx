@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
 import Helmet from "../components/Helmet";
-import Grid from "../components/Grid";
-import ProductCard from "../components/ProductCard";
 import CheckBox from "../components/CheckBox";
 import Button from "../components/Button";
 
@@ -10,6 +8,7 @@ import productData from "../assets/fake-data/products";
 import category from "../assets/fake-data/category";
 import productColor from "../assets/fake-data/product-color";
 import productSize from "../assets/fake-data/product-size";
+import InfinityList from "../components/InfinityList";
 
 function Catalog() {
   const initFilters = {
@@ -87,8 +86,6 @@ function Catalog() {
     updateProducts();
   }, [updateProducts]);
 
-  console.log(filter);
-
   return (
     <Helmet title="San pham">
       <div className="catalog">
@@ -154,7 +151,8 @@ function Catalog() {
         </div>
 
         <div className="catalog_content">
-          <Grid col={3} mdCol={2} smCol={1} gap={20}>
+          <InfinityList data={products} />
+          {/* <Grid col={3} mdCol={2} smCol={1} gap={20}>
             {products.map((product, i) => (
               <ProductCard
                 key={i}
@@ -165,7 +163,7 @@ function Catalog() {
                 slug={product.slug}
               />
             ))}
-          </Grid>
+          </Grid> */}
         </div>
       </div>
     </Helmet>
