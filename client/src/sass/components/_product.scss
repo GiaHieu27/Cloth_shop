@@ -29,109 +29,96 @@
     }
   }
 
-  //   &_info {
-  //     flex-grow: 1;
-  //     position: sticky;
-  //     top: $header-shrink-height;
-  //     padding-top: 2rem;
+  &_info {
+    flex-grow: 1;
+    position: sticky;
+    top: $header-shrink-height;
+    padding-top: 2rem;
 
-  //     @include mobile {
-  //       position: relative;
-  //       top: unset;
-  //     }
+    &_title {
+      font-size: 2.5rem;
+      font-weight: normal;
+    }
 
-  //     &_title {
-  //       font-size: 2.5rem;
-  //       font-weight: normal;
-  //     }
+    &_item {
+      margin-top: 2rem;
 
-  //     &_item {
-  //       margin-top: 2rem;
+      &_price {
+        color: $main-color;
+        font-size: 2rem;
+        font-weight: 600;
+      }
 
-  //       &_price {
-  //         color: $main-color;
-  //         font-size: 2rem;
-  //         font-weight: 600;
-  //       }
+      &_title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
 
-  //       &_title {
-  //         font-size: 1.5rem;
-  //         font-weight: 600;
-  //         margin-bottom: 1rem;
-  //       }
+      &_list {
+        @include flex(center, flex-start);
 
-  //       &_list {
-  //         @include flex(center, flex-start);
+        span {
+          @include flex(center, center);
 
-  //         &_item {
-  //           @include flex(center, center);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 2px solid $txt-second-color;
+          cursor: pointer;
+          margin-right: 1rem;
 
-  //           width: 50px;
-  //           height: 50px;
-  //           border-radius: 50%;
-  //           border: 2px solid $txt-second-color;
-  //           cursor: pointer;
-  //           margin-right: 1rem;
+          &.active {
+            border-color: $main-color;
+          }
 
-  //           @include mobile {
-  //             width: 40px;
-  //             height: 40px;
-  //           }
+          &:hover {
+            border-color: $main-color;
+          }
 
-  //           &.active {
-  //             border-color: $main-color;
-  //           }
+          .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
 
-  //           &:hover {
-  //             border-color: $main-color;
-  //           }
+        &:last-child {
+          span {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+          }
+        }
+      }
 
-  //           .circle {
-  //             width: 40px;
-  //             height: 40px;
-  //             border-radius: 50%;
+      &_quantity {
+        @include flex(flex-start, flex-start);
 
-  //             @include mobile {
-  //               width: 30px;
-  //               height: 30px;
-  //             }
-  //           }
+        &_btn {
+          @include flex(center, center);
+          width: 30px;
+          height: 30px;
+          border: 2px solid $txt-second-color;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
 
-  //           &_size {
-  //             font-size: 1.5rem;
-  //             text-transform: uppercase;
-  //           }
-  //         }
-  //       }
+        &_input {
+          @include flex(center, center);
+          height: 30px;
+          width: 90px;
+          font-size: 1.5rem;
+          border-top: 2px solid $txt-second-color;
+          border-bottom: 2px solid $txt-second-color;
+        }
+      }
 
-  //       &_quantity {
-  //         @include flex(flex-start, flex-start);
-
-  //         &_btn {
-  //           @include flex(center, center);
-  //           width: 30px;
-  //           height: 30px;
-  //           border: 2px solid $txt-second-color;
-  //           font-size: 1.5rem;
-  //           cursor: pointer;
-  //         }
-
-  //         &_input {
-  //           @include flex(center, center);
-  //           height: 30px;
-  //           width: 90px;
-  //           font-size: 1.5rem;
-  //           border-top: 2px solid $txt-second-color;
-  //           border-bottom: 2px solid $txt-second-color;
-  //         }
-  //       }
-
-  //       button {
-  //         margin-right: 1rem;
-  //         margin-bottom: 1rem;
-  //       }
-  //     }
-  //   }
+      button {
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }
 
 .product-description {

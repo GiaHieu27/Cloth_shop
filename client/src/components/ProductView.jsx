@@ -1,12 +1,26 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "./Button";
+import numberWithCommas from "../utils/numberWithCommas";
 
 function ProductView({ product }) {
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [description, setDescription] = useState(false);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => setPreviewImg(product.image01), [product.image01]);
+  const handleQuantityChange = (type) => {
+    if (type === "plus") setQuantity(quantity + 1);
+    else setQuantity(quantity - 1 < 1 ? quantity : quantity - 1);
+  };
+
+  useEffect(() => {
+    setPreviewImg(product.image01);
+    setQuantity(1);
+    setColor(undefined);
+    setSize(undefined);
+  }, [product]);
 
   return (
     <div className="product">
@@ -40,6 +54,64 @@ function ProductView({ product }) {
             <Button size="sm" onClick={() => setDescription(!description)}>
               {description ? "Thu gon" : "Xem them"}
             </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="product_info">
+        <h1 className="product_info_title">{product.title}</h1>
+        <div className="product_info_item">
+          <span className="product_info_title_price">
+            {numberWithCommas(product.price)}
+          </span>
+        </div>
+
+        <div className="product_info_item">
+          <div className="product_info_item_title">Mau sac</div>
+          <div className="product_info_item_list">
+            {product.colors.map((item, i) => (
+              <span
+                key={i}
+                className={`${color === item ? "active" : ""}`}
+                onClick={() => setColor(item)}
+              >
+                <div className={`circle bg-${item}`}></div>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="product_info_item">
+          <div className="product_info_item_title">Kich thuoc</div>
+          <div className="product_info_item_list">
+            {product.size.map((item, i) => (
+              <span
+                key={i}
+                className={`${size === item ? "active" : ""}`}
+                onClick={() => setSize(item)}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="product_info_item">
+          <div className="product_info_item_title">So luong</div>
+          <div className="product_info_item_quantity">
+            <div
+              className="product_info_item_quantity_btn"
+              onClick={() => handleQuantityChange("minus")}
+            >
+              <i className="bx bx-minus"></i>
+            </div>
+            <div className="product_info_item_quantity_input">{quantity}</div>
+            <div
+              className="product_info_item_quantity_btn"
+              onClick={() => handleQuantityChange("plus")}
+            >
+              <i className="bx bx-plus"></i>
+            </div>
           </div>
         </div>
       </div>
