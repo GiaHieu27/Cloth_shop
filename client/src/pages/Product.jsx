@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Grid from "../components/Grid";
 import ProductCard from "../components/ProductCard";
 import { useEffect } from "react";
+import ProductView from "../components/ProductView";
 
 function Product(props) {
   const { slug } = useParams();
@@ -16,7 +17,9 @@ function Product(props) {
   return (
     <Helmet title={product.title}>
       <Section>
-        <SectionBody>{product.title}</SectionBody>
+        <SectionBody>
+          <ProductView product={product} />
+        </SectionBody>
       </Section>
       <Section>
         <SectionTitle>Kham pha theme</SectionTitle>
