@@ -3,12 +3,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Helmet from "../components/Helmet";
 import CheckBox from "../components/CheckBox";
 import Button from "../components/Button";
+import InfinityList from "../components/InfinityList";
 
 import productData from "../assets/fake-data/products";
 import category from "../assets/fake-data/category";
 import productColor from "../assets/fake-data/product-color";
 import productSize from "../assets/fake-data/product-size";
-import InfinityList from "../components/InfinityList";
 
 function Catalog() {
   const initFilters = {
@@ -70,26 +70,24 @@ function Catalog() {
     let temp = productList;
 
     if (filter.categories.length > 0) {
-      temp = temp.filter((e) => filter.categories.includes(e.categorySlug));
+      temp = temp.filter((obj) => filter.categories.includes(obj.categorySlug));
     }
     if (filter.colors.length > 0) {
-      temp = temp.filter((e) => {
-        const check = e.colors.find((color) => filter.colors.includes(color));
+      temp = temp.filter((obj) => {
+        const check = obj.colors.find((color) => filter.colors.includes(color));
         return check !== undefined;
       });
     }
     if (filter.sizes.length > 0) {
-      temp = temp.filter((e) => {
-        const check = e.size.find((size) => filter.sizes.includes(size));
+      temp = temp.filter((obj) => {
+        const check = obj.size.find((size) => filter.sizes.includes(size));
         return check !== undefined;
       });
     }
     setProducts(temp);
   }, [filter, productList]);
 
-  useEffect(() => {
-    updateProducts();
-  }, [updateProducts]);
+  useEffect(() => updateProducts(), [updateProducts]);
 
   return (
     <Helmet title="San pham">
@@ -166,18 +164,6 @@ function Catalog() {
 
         <div className="catalog_content">
           <InfinityList data={products} />
-          {/* <Grid col={3} mdCol={2} smCol={1} gap={20}>
-            {products.map((product, i) => (
-              <ProductCard
-                key={i}
-                img01={product.image01}
-                img02={product.image02}
-                name={product.title}
-                price={Number(product.price)}
-                slug={product.slug}
-              />
-            ))}
-          </Grid> */}
         </div>
       </div>
     </Helmet>

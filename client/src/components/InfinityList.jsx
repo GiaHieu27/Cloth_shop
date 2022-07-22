@@ -20,6 +20,7 @@ function InfinityList({ data }) {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
+      
       if (
         window.scrollY + window.innerHeight >=
         listRef.current.clientHeight + listRef.current.offsetTop + 200
