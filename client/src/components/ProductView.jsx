@@ -5,12 +5,13 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 import productSlice from "../redux/slices/productSlice";
+import cartSlice from "../redux/slices/cartSlice";
 
 function ProductView({ product }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  if (!product) product = {};
+  // if (!product) product = {};
 
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [description, setDescription] = useState(false);
@@ -43,13 +44,24 @@ function ProductView({ product }) {
 
   const handleAddToCart = () => {
     if (check()) {
-      alert("Da them vao gio hang");
-      console.log({ size, color, quantity });
+      alert("Da them san pham vao gio hang");
+      dispatch(
+        cartSlice.actions.ADDITEM({
+          slug: product.slug,
+          color: color,
+          size: size,
+          quantity,
+          price: product.price,
+        })
+      );
     }
   };
 
   const handleGoToCart = () => {
-    if (check()) navigate("/cart");
+    if (check()) {
+      dispatch(productSlice.actions.REMOVE());
+      navigate("/cart");
+    }
   };
 
   return (
@@ -147,14 +159,7 @@ function ProductView({ product }) {
 
         <div className="product_info_item">
           <Button onClick={() => handleAddToCart()}>them vao gio hang</Button>
-          <Button
-            onClick={() => {
-              dispatch(productSlice.actions.REMOVE());
-              handleGoToCart();
-            }}
-          >
-            mua ngay
-          </Button>
+          <Button onClick={() => handleGoToCart()}>mua ngay</Button>
         </div>
       </div>
     </div>
