@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
+import productSlice from "../redux/slices/productSlice";
 
 function ProductCard({ img01, img02, name, price, slug }) {
+  const dispatch = useDispatch();
+
   return (
     <div className="product-card">
       <Link to={`/catalog/${slug}`}>
@@ -21,7 +26,12 @@ function ProductCard({ img01, img02, name, price, slug }) {
       </Link>
 
       <div className="product-card_btn">
-        <Button size="sm" icon="bx bx-cart" animate={true}>
+        <Button
+          size="sm"
+          icon="bx bx-cart"
+          animate={true}
+          onClick={() => dispatch(productSlice.actions.SET(slug))}
+        >
           Chon mua
         </Button>
       </div>

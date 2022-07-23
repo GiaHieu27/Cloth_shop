@@ -6,6 +6,7 @@ import Catalog from "./pages/Catalog";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ProductViewModal from "./components/ProductViewModal";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/catalog/:slug" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
+          <ProductViewModal />
         </main>
       </div>
       <Footer />

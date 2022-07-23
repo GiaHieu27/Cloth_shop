@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
+import productSlice from "../redux/slices/productSlice";
 
 function ProductView({ product }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  if (!product) product = {};
 
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [description, setDescription] = useState(false);
@@ -37,7 +42,10 @@ function ProductView({ product }) {
   };
 
   const handleAddToCart = () => {
-    if (check()) console.log({ size, color, quantity });
+    if (check()) {
+      alert("Da them vao gio hang");
+      console.log({ size, color, quantity });
+    }
   };
 
   const handleGoToCart = () => {
@@ -139,7 +147,14 @@ function ProductView({ product }) {
 
         <div className="product_info_item">
           <Button onClick={() => handleAddToCart()}>them vao gio hang</Button>
-          <Button onClick={() => handleGoToCart()}>mua ngay</Button>
+          <Button
+            onClick={() => {
+              dispatch(productSlice.actions.REMOVE());
+              handleGoToCart();
+            }}
+          >
+            mua ngay
+          </Button>
         </div>
       </div>
     </div>
