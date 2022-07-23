@@ -1,26 +1,48 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 
 function ProductView({ product }) {
+  const navigate = useNavigate();
+
   const [previewImg, setPreviewImg] = useState(product.image01);
   const [description, setDescription] = useState(false);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    setPreviewImg(product.image01);
+    setQuantity(1);
+    setColor("");
+    setSize("");
+  }, [product]);
+
   const handleQuantityChange = (type) => {
     if (type === "plus") setQuantity(quantity + 1);
     else setQuantity(quantity - 1 < 1 ? quantity : quantity - 1);
   };
 
-  useEffect(() => {
-    setPreviewImg(product.image01);
-    setQuantity(1);
-    setColor(undefined);
-    setSize(undefined);
-  }, [product]);
+  const check = () => {
+    if (!color) {
+      alert("Vui long chon mau sac");
+      return;
+    } else if (!size) {
+      alert("Vui long chon kich thuoc");
+      return;
+    }
+    return true;
+  };
+
+  const handleAddToCart = () => {
+    if (check()) console.log({ size, color, quantity });
+  };
+
+  const handleGoToCart = () => {
+    if (check()) navigate("/cart");
+  };
 
   return (
     <div className="product">
@@ -113,6 +135,11 @@ function ProductView({ product }) {
               <i className="bx bx-plus"></i>
             </div>
           </div>
+        </div>
+
+        <div className="product_info_item">
+          <Button onClick={() => handleAddToCart()}>them vao gio hang</Button>
+          <Button onClick={() => handleGoToCart()}>mua ngay</Button>
         </div>
       </div>
     </div>
