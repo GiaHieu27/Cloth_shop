@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Grid from "./Grid";
 import ProductCard from "./ProductCard";
 
-function InfinityList({ data }) {
+function InfinityList({ products }) {
   const preLoad = 6; // items each load
 
   const [product, setProduct] = useState([]);
@@ -14,9 +14,9 @@ function InfinityList({ data }) {
   const listRef = useRef(null);
 
   useEffect(() => {
-    setProduct(data.slice(0, preLoad));
+    setProduct(products.slice(0, preLoad));
     setIndex(1);
-  }, [data]);
+  }, [products]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -33,31 +33,31 @@ function InfinityList({ data }) {
 
   useEffect(() => {
     const getItems = () => {
-      const pages = Math.floor(data.length / preLoad);
-      const maxIndex = data.lenght % preLoad === 0 ? pages : pages + 1;
+      const pages = Math.floor(products.length / preLoad);
+      const maxIndex = products.lenght % preLoad === 0 ? pages : pages + 1;
 
       if (load && index <= maxIndex) {
         const start = preLoad * index;
         const end = start + preLoad;
-        setProduct(product.concat(data.slice(start, end)));
+        setProduct(product.concat(products.slice(start, end)));
         setIndex(index + 1);
       }
     };
     getItems();
     setLoad(false);
-  }, [load, index, product, data]);
+  }, [load, index, product, products]);
 
   return (
     <div ref={listRef}>
       <Grid col={3} mdCol={2} smCol={1} gap={20}>
-        {product.map((product, i) => (
+        {product.map((item, i) => (
           <ProductCard
             key={i}
-            img01={product.image01}
-            img02={product.image02}
-            name={product.title}
-            price={Number(product.price)}
-            slug={product.slug}
+            name={item.title}
+            price={Number(item.price)}
+            img01={item.image01}
+            img02={item.image02}
+            slug={item.slug}
           />
         ))}
       </Grid>
@@ -66,7 +66,7 @@ function InfinityList({ data }) {
 }
 
 InfinityList.propTypes = {
-  data: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 export default InfinityList;

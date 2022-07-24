@@ -16,9 +16,9 @@ function Catalog() {
     colors: [],
     sizes: [],
   };
-  const productList = productData.getAllProducts();
+  const allProducts = productData.getAllProducts();
 
-  const [products, setProducts] = useState(productList);
+  const [products, setProducts] = useState(allProducts);
   const [filter, setFilter] = useState(initFilters);
 
   const filterRef = useRef(null);
@@ -67,7 +67,7 @@ function Catalog() {
   };
 
   const updateProducts = useCallback(() => {
-    let temp = productList;
+    let temp = allProducts;
 
     if (filter.categories.length > 0) {
       temp = temp.filter((obj) => filter.categories.includes(obj.categorySlug));
@@ -85,7 +85,7 @@ function Catalog() {
       });
     }
     setProducts(temp);
-  }, [filter, productList]);
+  }, [filter, allProducts]);
 
   useEffect(() => updateProducts(), [updateProducts]);
 
@@ -163,7 +163,7 @@ function Catalog() {
         </div>
 
         <div className="catalog_content">
-          <InfinityList data={products} />
+          <InfinityList products={products} />
         </div>
       </div>
     </Helmet>

@@ -29,10 +29,10 @@ function Product() {
             {relatedProduct.map((product, i) => (
               <ProductCard
                 key={i}
-                img01={product.image01}
-                img02={product.image02}
                 name={product.title}
                 price={Number(product.price)}
+                img01={product.image01}
+                img02={product.image02}
                 slug={product.slug}
               />
             ))}

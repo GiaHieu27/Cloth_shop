@@ -6,7 +6,7 @@ import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 import productSlice from "../redux/slices/productSlice";
 
-function ProductCard({ img01, img02, name, price, slug }) {
+function ProductCard({ name, price, img01, img02, slug }) {
   const dispatch = useDispatch();
 
   return (

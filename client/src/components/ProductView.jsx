@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 import productSlice from "../redux/slices/productSlice";
@@ -47,11 +48,11 @@ function ProductView({ product }) {
       alert("Da them san pham vao gio hang");
       dispatch(
         cartSlice.actions.ADDITEM({
+          price: product.price,
           slug: product.slug,
           color: color,
           size: size,
           quantity,
-          price: product.price,
         })
       );
     }
@@ -114,8 +115,8 @@ function ProductView({ product }) {
             {product.colors.map((item, i) => (
               <span
                 key={i}
-                className={`${color === item ? "active" : ""}`}
                 onClick={() => setColor(item)}
+                className={`${color === item ? "active" : ""}`}
               >
                 <div className={`circle bg-${item}`}></div>
               </span>
@@ -129,8 +130,8 @@ function ProductView({ product }) {
             {product.size.map((item, i) => (
               <span
                 key={i}
-                className={`${size === item ? "active" : ""}`}
                 onClick={() => setSize(item)}
+                className={`${size === item ? "active" : ""}`}
               >
                 {item}
               </span>

@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const item =
-  localStorage.getItem("cartItem") !== null
-    ? JSON.parse(localStorage.getItem("cartItem"))
+const items =
+  localStorage.getItem("cartItems") !== null
+    ? JSON.parse(localStorage.getItem("cartItems"))
     : [];
 
 const initialState = {
-  value: item,
+  value: items,
 };
 
 const cartSlice = createSlice({
@@ -15,10 +15,21 @@ const cartSlice = createSlice({
   reducers: {
     ADDITEM: (state, action) => {
       const newItem = action.payload;
-      const duplicate = findItem(state.value, newItem);
+      const duplicate = state.value.filter(
+        (item) =>
+          item.slug === newItem.slug &&
+          item.color === newItem.color &&
+          item.size === newItem.size
+      );
+      console.log(duplicate);
 
       if (duplicate.length > 0) {
-        state.value = delItem(state.value, newItem);
+        state.value = state.value.filter(
+          (item) =>
+            item.slug !== newItem.slug ||
+            item.color !== newItem.color ||
+            item.size !== newItem.size
+        );
         state.value = [
           ...state.value,
           {
@@ -34,33 +45,22 @@ const cartSlice = createSlice({
             ...newItem,
             id:
               state.value.length > 0
-                ? state.value[state.value.length - 1].id
+                ? state.value[state.value.length - 1].id + 1
                 : 1,
           },
         ];
       }
 
-      localStorage.setItem("cartItem", JSON.stringify(sortItem(state.value)));
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          state.value.sort((a, b) => (a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
+        )
+      );
+
+      console.log(state.value);
     },
   },
 });
-
-const findItem = (arr, item) => {
-  arr.filter(
-    (e) =>
-      e.slug === item.slug && e.color === item.color && e.size === item.size
-  );
-};
-
-const delItem = (arr, item) => {
-  arr.filter(
-    (e) =>
-      e.slug !== item.slug || e.color !== item.color || e.size !== item.size
-  );
-};
-
-const sortItem = (arr) => {
-  arr.sort((a, b) => (a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
-};
 
 export default cartSlice;

@@ -38,11 +38,11 @@ function Header() {
         headerRef.current.classList.remove("shrink");
       }
     });
-    return () => {
-      window.removeEventListener("scroll", () => {
-        headerRef.current.classList.remove("shrink");
-      });
-    };
+    // return () => {
+      // window.removeEventListener("scroll", () => {
+      //   headerRef.current.classList.remove("shrink");
+      // });
+    // };
   }, []);
 
   const leftMenuRef = useRef(null);
