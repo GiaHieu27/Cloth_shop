@@ -9,8 +9,8 @@ const initialState = {
   value: items,
 };
 
-const cartSlice = createSlice({
-  name: "cart",
+const cartItemsSlice = createSlice({
+  name: "cartItems",
   initialState,
   reducers: {
     ADDITEM: (state, action) => {
@@ -21,7 +21,6 @@ const cartSlice = createSlice({
           item.color === newItem.color &&
           item.size === newItem.size
       );
-      console.log(duplicate);
 
       if (duplicate.length > 0) {
         state.value = state.value.filter(
@@ -57,10 +56,8 @@ const cartSlice = createSlice({
           state.value.sort((a, b) => (a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
         )
       );
-
-      console.log(state.value);
     },
   },
 });
 
-export default cartSlice;
+export default cartItemsSlice;

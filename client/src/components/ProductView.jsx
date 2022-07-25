@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 import productSlice from "../redux/slices/productSlice";
-import cartSlice from "../redux/slices/cartSlice";
+import cartSlice from "../redux/slices/cartItemsSlice";
 
 function ProductView({ product }) {
   const navigate = useNavigate();
@@ -61,6 +61,15 @@ function ProductView({ product }) {
   const handleGoToCart = () => {
     if (check()) {
       dispatch(productSlice.actions.REMOVE());
+      dispatch(
+        cartSlice.actions.ADDITEM({
+          price: product.price,
+          slug: product.slug,
+          color: color,
+          size: size,
+          quantity,
+        })
+      );
       navigate("/cart");
     }
   };

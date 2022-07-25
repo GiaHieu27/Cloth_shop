@@ -272,7 +272,7 @@ const getCartItemsInfo = (cartItems) => {
       let product = getProductBySlug(e.slug);
       res.push({
         ...e,
-        product: product,
+        product,
       });
     });
   }
