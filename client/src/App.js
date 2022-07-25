@@ -6,6 +6,7 @@ import Catalog from "./pages/Catalog";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 import ProductViewModal from "./components/ProductViewModal";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:slug" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
           <ProductViewModal />
         </main>

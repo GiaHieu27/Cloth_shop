@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/images/Logo-2.png";
 
@@ -23,6 +24,8 @@ const mainNav = [
 ];
 
 function Header() {
+  const { cartItems } = useSelector((state) => state.cart);
+
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((i) => i.path === pathname);
 
@@ -38,11 +41,6 @@ function Header() {
         headerRef.current.classList.remove("shrink");
       }
     });
-    // return () => {
-      // window.removeEventListener("scroll", () => {
-      //   headerRef.current.classList.remove("shrink");
-      // });
-    // };
   }, []);
 
   const leftMenuRef = useRef(null);
@@ -91,10 +89,17 @@ function Header() {
             <div className="header_menu_right_item header_menu_item">
               <Link to="/cart">
                 <i className="bx bx-shopping-bag"></i>
+                {cartItems && cartItems.length > 0 && (
+                  <div className="circle">
+                    <span>{cartItems.length}</span>
+                  </div>
+                )}
               </Link>
             </div>
             <div className="header_menu_right_item header_menu_item">
-              <i className="bx bx-user"></i>
+              <Link to="/login">
+                <i className="bx bx-user"></i>
+              </Link>
             </div>
             <div className="header_menu_right_item header_menu_item">
               <i className="bx bx-search"></i>
