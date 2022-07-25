@@ -13,14 +13,14 @@ const cartSlice = createSlice({
   reducers: {
     ADDITEM: (state, action) => {
       const newItem = action.payload;
-      const duplicate = state.cartItems.filter(
+      const item = state.cartItems.filter(
         (item) =>
           item.slug === newItem.slug &&
           item.color === newItem.color &&
           item.size === newItem.size
       );
 
-      if (duplicate.length > 0) {
+      if (item.length > 0) {
         state.cartItems = state.cartItems.filter(
           (item) =>
             item.slug !== newItem.slug ||
@@ -31,8 +31,8 @@ const cartSlice = createSlice({
           ...state.cartItems,
           {
             ...newItem,
-            id: duplicate[0].id,
-            quantity: newItem.quantity + duplicate[0].quantity,
+            id: item[0].id,
+            quantity: newItem.quantity + item[0].quantity,
           },
         ];
       } else {
@@ -48,6 +48,57 @@ const cartSlice = createSlice({
         ];
       }
 
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          state.cartItems.sort((a, b) =>
+            a.id > b.id ? 1 : a.id < b.id ? -1 : 0
+          )
+        )
+      );
+    },
+    UPDATEITEM: (state, action) => {
+      const itemUpdate = action.payload;
+      const item = state.cartItems.filter(
+        (item) =>
+          item.slug === itemUpdate.slug &&
+          item.color === itemUpdate.color &&
+          item.size === itemUpdate.size
+      );
+
+      if (item.length > 0) {
+        state.cartItems = state.cartItems.filter(
+          (item) =>
+            item.slug !== itemUpdate.slug ||
+            item.color !== itemUpdate.color ||
+            item.size !== itemUpdate.size
+        );
+        state.cartItems = [
+          ...state.cartItems,
+          {
+            ...itemUpdate,
+            id: item[0].id,
+            // quantity: itemUpdate.quantity + item[0].quantity,
+          },
+        ];
+      }
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(
+          state.cartItems.sort((a, b) =>
+            a.id > b.id ? 1 : a.id < b.id ? -1 : 0
+          )
+        )
+      );
+    },
+    REMOVEITEM: (state, action) => {
+      const itemRemove = action.payload;
+      state.cartItems = state.cartItems.filter(
+        (item) =>
+          item.slug !== itemRemove.slug ||
+          item.color !== itemRemove.color ||
+          item.size !== itemRemove.size
+      );
       localStorage.setItem(
         "cartItems",
         JSON.stringify(

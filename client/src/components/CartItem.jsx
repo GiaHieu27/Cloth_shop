@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import numberWithCommas from "../utils/numberWithCommas";
+import cartSlice from "../redux/slices/cartSlice";
 
 function CartItem({ itemm }) {
   const dispatch = useDispatch();
@@ -11,9 +12,27 @@ function CartItem({ itemm }) {
   const [item, setItem] = useState({});
   const [quantity, setQuantity] = useState(0);
 
-  const handleQuantityChange = (type) => {
-    if (type === "plus") setQuantity(quantity + 1);
-    else setQuantity(quantity - 1 < 1 ? quantity : quantity - 1);
+  const handleQuantityUpdate = (type) => {
+    if (type === "plus") {
+      dispatch(
+        cartSlice.actions.UPDATEITEM({ ...item, quantity: quantity + 1 })
+      );
+    } else {
+      dispatch(
+        cartSlice.actions.UPDATEITEM({
+          ...item,
+          quantity:
+            quantity - 1 === 0
+              ? dispatch(cartSlice.actions.REMOVEITEM(item))
+              : quantity - 1,
+        })
+      );
+    }
+  };
+
+  const handleRemoveItem = () => {
+    dispatch(cartSlice.actions.REMOVEITEM(item));
+    console.log("remove");
   };
 
   useEffect(() => {
@@ -26,7 +45,7 @@ function CartItem({ itemm }) {
       <div className="cart_item_image">
         <img src={item?.product?.image01} alt="" />
       </div>
-      
+
       <div className="cart_item_info">
         <div className="cart_item_info_name">
           <Link to={`/catalog/${item?.slug}`}>
@@ -40,18 +59,21 @@ function CartItem({ itemm }) {
           <div className="product_info_item_quantity">
             <div
               className="product_info_item_quantity_btn"
-              onClick={() => handleQuantityChange("minus")}
+              onClick={() => handleQuantityUpdate("minus")}
             >
               <i className="bx bx-minus"></i>
             </div>
             <div className="product_info_item_quantity_input">{quantity}</div>
             <div
               className="product_info_item_quantity_btn"
-              onClick={() => handleQuantityChange("plus")}
+              onClick={() => handleQuantityUpdate("plus")}
             >
               <i className="bx bx-plus"></i>
             </div>
           </div>
+        </div>
+        <div className="cart_item_info_del" onClick={() => handleRemoveItem()}>
+          <i className="bx bx-trash"></i>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import Helmet from "../components/Helmet";
 import numberWithCommas from "../utils/numberWithCommas";
 
 function Cart() {
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [cartProducts, setCardProducts] = useState([]);
   const [totalProducts, setTotalProducts] = useState(0);

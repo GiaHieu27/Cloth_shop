@@ -62,15 +62,54 @@
       &_price {
         font-size: 1.25rem;
       }
+
+      &_del {
+        font-size: 1.5rem;
+
+        i {
+          cursor: pointer;
+
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
     }
   }
 }
 
 @include tablet {
+  .cart {
+    &_info {
+      width: 50%;
+    }
+
+    &_item {
+      &_info {
+        @include flex(flex-start, center);
+        flex-direction: column;
+
+        & > * {
+          margin-bottom: 10px;
+        }
+
+        &_name {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 @include mobile {
   .cart {
     flex-wrap: wrap;
+
+    &_info {
+      width: 100%;
+      position: unset;
+      margin-right: 0;
+      margin-bottom: 15%;
+    }
   }
 }
