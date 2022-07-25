@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import numberWithCommas from "../utils/numberWithCommas";
 import productSlice from "../redux/slices/productSlice";
-import cartSlice from "../redux/slices/cartItemsSlice";
+import cartSlice from "../redux/slices/cartSlice";
 
 function ProductView({ product }) {
   const navigate = useNavigate();

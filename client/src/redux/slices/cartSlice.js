@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const items =
-  localStorage.getItem("cartItems") !== null
-    ? JSON.parse(localStorage.getItem("cartItems"))
-    : [];
-
 const initialState = {
-  value: items,
+  cartItems:
+    localStorage.getItem("cartItems") !== null
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
 };
 
-const cartItemsSlice = createSlice({
-  name: "cartItems",
+const cartSlice = createSlice({
+  name: "cart",
   initialState,
   reducers: {
     ADDITEM: (state, action) => {
       const newItem = action.payload;
-      const duplicate = state.value.filter(
+      const duplicate = state.cartItems.filter(
         (item) =>
           item.slug === newItem.slug &&
           item.color === newItem.color &&
@@ -23,14 +21,14 @@ const cartItemsSlice = createSlice({
       );
 
       if (duplicate.length > 0) {
-        state.value = state.value.filter(
+        state.cartItems = state.cartItems.filter(
           (item) =>
             item.slug !== newItem.slug ||
             item.color !== newItem.color ||
             item.size !== newItem.size
         );
-        state.value = [
-          ...state.value,
+        state.cartItems = [
+          ...state.cartItems,
           {
             ...newItem,
             id: duplicate[0].id,
@@ -38,13 +36,13 @@ const cartItemsSlice = createSlice({
           },
         ];
       } else {
-        state.value = [
-          ...state.value,
+        state.cartItems = [
+          ...state.cartItems,
           {
             ...newItem,
             id:
-              state.value.length > 0
-                ? state.value[state.value.length - 1].id + 1
+              state.cartItems.length > 0
+                ? state.cartItems[state.cartItems.length - 1].id + 1
                 : 1,
           },
         ];
@@ -53,11 +51,13 @@ const cartItemsSlice = createSlice({
       localStorage.setItem(
         "cartItems",
         JSON.stringify(
-          state.value.sort((a, b) => (a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
+          state.cartItems.sort((a, b) =>
+            a.id > b.id ? 1 : a.id < b.id ? -1 : 0
+          )
         )
       );
     },
   },
 });
 
-export default cartItemsSlice;
+export default cartSlice;

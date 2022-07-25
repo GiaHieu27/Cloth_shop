@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function Button({ backgroundColor, icon, ...props }) {
   const bg = backgroundColor ? `bg-${backgroundColor}` : "bg-main";
-  const size = props.size ? "btn-" : "";
+  const size = props.size ? `btn-${props.size}` : "";
   const animate = props.animate ? "btn-animate" : "";
 
   return (
