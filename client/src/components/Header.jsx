@@ -25,7 +25,6 @@ const mainNav = [
 
 function Header() {
   const { cartItems } = useSelector((state) => state.cart);
-
   const { pathname } = useLocation();
   const activeNav = mainNav.findIndex((i) => i.path === pathname);
 
