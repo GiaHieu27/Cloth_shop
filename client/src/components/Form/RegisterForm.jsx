@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
 
-function RegisterForm() {
+function LoginForm() {
   return (
-    <div className="login_container sign-in_container">
+    <div className="login_container sign-up_container">
       <Formik>
         {(formik) => (
           <Form>
-            <h1>Sign in</h1>
+            <h1>Dang ky</h1>
             <div className="login_social">
               <i className="login_social_item bx bxl-facebook"></i>
               <i className="login_social_item bx bxl-google"></i>
               <i className="login_social_item bx bxl-facebook"></i>
             </div>
-            <span>hoac su dung tai khoan cua ban</span>
+            <span>hoac dang ky tai khoan</span>
+            <input type="text" placeholder="Name" />
             <input type="text" placeholder="Email" />
             <input type="text" placeholder="Password" />
-            <Link to="/">Quen mat khau</Link>
-            <button>Sign up</button>
+            <button>Sign ky</button>
           </Form>
         )}
       </Formik>
@@ -25,4 +24,4 @@ function RegisterForm() {
   );
 }
 
-export default RegisterForm;
+export default LoginForm;
