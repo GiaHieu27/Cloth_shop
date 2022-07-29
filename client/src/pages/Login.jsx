@@ -7,12 +7,11 @@ function Login() {
 
   return (
     <div className="wrap">
-      <h2 className="login_header">Dang ki/Dang nhap</h2>
       <div className="login" ref={loginRef}>
         <LoginForm />
         <RegisterForm />
-        <div className="login_overlay_container">
-          <div className="login_overlay">
+        <div className="login_overlay">
+          <div className="login_overlay_container">
             <div className="login_overlay_panel login_overlay_left">
               <h1>Chao mung tro lai</h1>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit</p>

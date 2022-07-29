@@ -3,6 +3,9 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
+const connectDb = require("./config");
+connectDb(process.env.DB);
+
 app.get("/", (req, res) => {
   res.send("E-commerce website server");
 });

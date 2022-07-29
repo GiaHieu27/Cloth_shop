@@ -19,7 +19,7 @@ function RegisterForm() {
                 <i className="login_social_item bx bxl-facebook"></i>
               </Link>
             </div>
-            <span>hoac su dung tai khoan cua ban</span>
+            <span>Hoac su dung tai khoan cua ban</span>
             <input type="text" placeholder="Email" />
             <input type="text" placeholder="Password" />
             <Link to="/">Quen mat khau</Link>
