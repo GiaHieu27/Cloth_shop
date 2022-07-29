@@ -9,9 +9,15 @@ function RegisterForm() {
           <Form>
             <h1>Dang nhap</h1>
             <div className="login_social">
-              <i className="login_social_item bx bxl-facebook"></i>
-              <i className="login_social_item bx bxl-google"></i>
-              <i className="login_social_item bx bxl-facebook"></i>
+              <Link to="/">
+                <i className="login_social_item bx bxl-facebook"></i>
+              </Link>
+              <Link to="/">
+                <i className="login_social_item bx bxl-facebook"></i>
+              </Link>
+              <Link to="/">
+                <i className="login_social_item bx bxl-facebook"></i>
+              </Link>
             </div>
             <span>hoac su dung tai khoan cua ban</span>
             <input type="text" placeholder="Email" />

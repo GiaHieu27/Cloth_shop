@@ -99,3 +99,10 @@ img {
 .grid {
   display: grid;
 }
+
+.wrap {
+  @include flex(center, center);
+  flex-direction: column;
+  height: 100vh;
+  margin: -80px 50px;
+}

@@ -16,7 +16,7 @@ function LoginForm() {
             <input type="text" placeholder="Name" />
             <input type="text" placeholder="Email" />
             <input type="text" placeholder="Password" />
-            <button>Sign ky</button>
+            <button>Dang ky</button>
           </Form>
         )}
       </Formik>
