@@ -34,10 +34,15 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     reviews: [
       {
         type: ObjectId,
-        ref: "Reviews",
+        ref: "Review",
       },
     ],
     rating: {
@@ -46,11 +51,6 @@ const productSchema = mongoose.Schema(
       default: 0,
     },
     numReviews: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    price: {
       type: Number,
       required: true,
       default: 0,
