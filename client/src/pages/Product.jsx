@@ -16,7 +16,7 @@ function Product() {
   useEffect(() => window.scrollTo(0, 0), [product]);
 
   return (
-    <Helmet title={product.title}>
+    <Helmet title={product.name}>
       <Section>
         <SectionBody>
           <ProductView product={product} />
@@ -29,7 +29,7 @@ function Product() {
             {relatedProduct.map((product, i) => (
               <ProductCard
                 key={i}
-                name={product.title}
+                name={product.name}
                 price={Number(product.price)}
                 img01={product.image01}
                 img02={product.image02}

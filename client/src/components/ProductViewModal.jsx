@@ -7,7 +7,7 @@ import productData from "../assets/fake-data/products";
 import productSlice from "../redux/slices/productSlice";
 
 function ProductViewModal() {
-  const productSlug = useSelector((state) => state.product.value);
+  const productSlug = useSelector((state) => state.product.productPopup);
   const dispatch = useDispatch();
 
   const [product, setProduct] = useState();

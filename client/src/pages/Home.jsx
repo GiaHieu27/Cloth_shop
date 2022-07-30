@@ -46,7 +46,7 @@ function Home() {
                 key={i}
                 img01={product.image01}
                 img02={product.image02}
-                name={product.title}
+                name={product.name}
                 price={Number(product.price)}
                 slug={product.slug}
               />
@@ -64,7 +64,7 @@ function Home() {
                 key={i}
                 img01={product.image01}
                 img02={product.image02}
-                name={product.title}
+                name={product.name}
                 price={Number(product.price)}
                 slug={product.slug}
               />
@@ -90,7 +90,7 @@ function Home() {
                 key={i}
                 img01={product.image01}
                 img02={product.image02}
-                name={product.title}
+                name={product.name}
                 price={Number(product.price)}
                 slug={product.slug}
               />

@@ -53,7 +53,7 @@ function InfinityList({ products }) {
         {product.map((item, i) => (
           <ProductCard
             key={i}
-            name={item.title}
+            name={item.name}
             price={Number(item.price)}
             img01={item.image01}
             img02={item.image02}

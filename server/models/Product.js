@@ -13,11 +13,12 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     image02: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     slug: {
       type: String,
+      required: true,
     },
     categorySlug: {
       type: String,
@@ -47,12 +48,10 @@ const productSchema = mongoose.Schema(
     ],
     rating: {
       type: Number,
-      required: true,
       default: 0,
     },
     numReviews: {
       type: Number,
-      required: true,
       default: 0,
     },
     countInStock: {

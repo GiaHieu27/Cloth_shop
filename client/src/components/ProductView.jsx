@@ -111,7 +111,7 @@ function ProductView({ product }) {
       </div>
 
       <div className="product_info">
-        <h1 className="product_info_title">{product.title}</h1>
+        <h1 className="product_info_title">{product.name}</h1>
         <div className="product_info_item">
           <span className="product_info_title_price">
             {numberWithCommas(product.price)}
