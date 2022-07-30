@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const users = require("../data/user");
+const users = require("../assets/fake-data/user");
 
 exports.user = async (req, res) => {
   await User.remove({});
