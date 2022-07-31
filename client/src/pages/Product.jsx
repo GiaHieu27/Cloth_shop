@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import Helmet from "../components/Helmet";
 import Grid from "../components/Grid";
@@ -7,13 +9,33 @@ import ProductCard from "../components/ProductCard";
 import ProductView from "../components/ProductView";
 import { Section, SectionTitle, SectionBody } from "../components/Section";
 import productData from "../assets/fake-data/products";
+import productSlice from "../redux/slices/productSlice";
 
 function Product() {
+  const dispatch = useDispatch();
   const { slug } = useParams();
   const product = productData.getProductBySlug(slug);
   const relatedProduct = productData.getProducts(8);
 
   useEffect(() => window.scrollTo(0, 0), [product]);
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = async () => {
+    try {
+      dispatch(productSlice.actions.PRODUCT_LIST_REQUEST());
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/allProducts`
+      );
+
+      dispatch(productSlice.actions.PRODUCT_LIST_SUCCESS(data));
+    } catch (error) {
+      dispatch(
+        productSlice.actions.PRODUCT_LIST_ERROR(error.response.data.message)
+      );
+    }
+  };
 
   return (
     <Helmet title={product.name}>

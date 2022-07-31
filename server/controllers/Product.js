@@ -12,9 +12,20 @@ exports.addProduct = async (req, res) => {
 };
 
 exports.allProducts = async (req, res) => {
-  console.log("Product API");
+  try {
+    const allProducts = await Product.find({});
+    res.status(200).json(allProducts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 exports.product = async (req, res) => {
-  console.log("Product API");
+  try {
+    const slug = req.params.slug;
+    const product = await Product.findOne({ slug: slug });
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
