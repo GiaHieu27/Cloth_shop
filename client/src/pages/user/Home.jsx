@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 
-import Helmet from "../components/Helmet";
-import Slider from "../components/Slider/index";
-import Policy from "../components/Policy";
-import Grid from "../components/Grid";
-import ProductCard from "../components/ProductCard";
-import banner from "../assets/images/banner.png";
-import { Section, SectionTitle, SectionBody } from "../components/Section";
+import Helmet from "../../components/user/Layout/Helmet";
+import Slider from "../../components/user/Slider/index";
+import Policy from "../../components/user/Policy";
+import Grid from "../../components/user/Grid";
+import ProductCard from "../../components/user/ProductCard";
+import banner from "../../assets/images/banner.png";
+import {
+  Section,
+  SectionTitle,
+  SectionBody,
+} from "../../components/user/Section";
 
-import heroSliderData from "../assets/fake-data/hero-slider";
-import policy from "../assets/fake-data/policy";
-import products from "../assets/fake-data/products";
+import heroSliderData from "../../assets/fake-data/hero-slider";
+import policy from "../../assets/fake-data/policy";
+import products from "../../assets/fake-data/products";
 
 function Home() {
   return (

@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 import Button from "./Button";
-import numberWithCommas from "../utils/numberWithCommas";
-import productSlice from "../redux/slices/productSlice";
+import numberWithCommas from "../../utils/numberWithCommas";
+import productSlice from "../../redux/slices/productSlice";
 
 function ProductCard({ name, price, img01, img02, slug }) {
   const dispatch = useDispatch();

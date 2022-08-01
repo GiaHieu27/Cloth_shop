@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import productData from "../assets/fake-data/products";
-import Button from "../components/Button";
-import CartItem from "../components/CartItem";
-import Helmet from "../components/Helmet";
-import numberWithCommas from "../utils/numberWithCommas";
+import productData from "../../assets/fake-data/products";
+import Button from "../../components/user/Button";
+import CartItem from "../../components/user/CartItem";
+import Helmet from "../../components/user/Layout/Helmet";
+import numberWithCommas from "../../utils/numberWithCommas";
 
 function Cart() {
   const { cartItems } = useSelector((state) => state.cart);

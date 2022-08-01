@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import LoginForm from "../components/Form/LoginForm";
-import RegisterForm from "../components/Form/RegisterForm";
+import LoginForm from "../../components/user/Form/LoginForm";
+import RegisterForm from "../../components/user/Form/RegisterForm";
 
 function Login() {
   const loginRef = useRef(null);

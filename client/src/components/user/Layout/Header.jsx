@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/images/Logo-2.png";
+import Logo from "../../../assets/images/Logo-2.png";
 
 const mainNav = [
   {

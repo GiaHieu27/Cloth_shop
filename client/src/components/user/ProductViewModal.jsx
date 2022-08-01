@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ProductView from "./ProductView";
 import Button from "./Button";
-import productData from "../assets/fake-data/products";
-import productSlice from "../redux/slices/productSlice";
+import productData from "../../assets/fake-data/products";
+import productSlice from "../../redux/slices/productSlice";
 
 function ProductViewModal() {
   const productSlug = useSelector((state) => state.product.productPopup);

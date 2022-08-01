@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Catalog from "./pages/Catalog";
-import Cart from "./pages/Cart";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Login from "./pages/Login";
-import ProductViewModal from "./components/ProductViewModal";
+import Home from "./pages/user/Home";
+import Product from "./pages/user/Product";
+import Catalog from "./pages/user/Catalog";
+import Cart from "./pages/user/Cart";
+import Header from "./components/user/Layout/Header";
+import Footer from "./components/user/Layout/Footer";
+import Login from "./pages/user/Login";
+import ProductViewModal from "./components/user/ProductViewModal";
 
 function App() {
   return (

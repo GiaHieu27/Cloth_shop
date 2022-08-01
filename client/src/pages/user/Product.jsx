@@ -3,13 +3,17 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import Helmet from "../components/Helmet";
-import Grid from "../components/Grid";
-import ProductCard from "../components/ProductCard";
-import ProductView from "../components/ProductView";
-import { Section, SectionTitle, SectionBody } from "../components/Section";
-import productData from "../assets/fake-data/products";
-import productSlice from "../redux/slices/productSlice";
+import Helmet from "../../components/user/Layout/Helmet";
+import Grid from "../../components/user/Grid";
+import ProductCard from "../../components/user/ProductCard";
+import ProductView from "../../components/user/ProductView";
+import {
+  Section,
+  SectionTitle,
+  SectionBody,
+} from "../../components/user/Section";
+import productData from "../../assets/fake-data/products";
+import productSlice from "../../redux/slices/productSlice";
 
 function Product() {
   const dispatch = useDispatch();

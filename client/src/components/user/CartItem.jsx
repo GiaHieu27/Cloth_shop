@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import numberWithCommas from "../utils/numberWithCommas";
-import cartSlice from "../redux/slices/cartSlice";
+import numberWithCommas from "../../utils/numberWithCommas";
+import cartSlice from "../../redux/slices/cartSlice";
 
 function CartItem({ itemm }) {
   const dispatch = useDispatch();
