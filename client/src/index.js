@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import App from "./App";
+import User from "./User";
 import store from "./redux/store";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./sass/main.scss";
 import "./assets/boxicons-2.0.7/css/boxicons.min.css";
 
@@ -13,7 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <App />
+        <User />
       </Router>
     </Provider>
   </React.StrictMode>

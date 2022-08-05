@@ -7,6 +7,7 @@ import Cart from "./pages/user/Cart";
 import Header from "./components/user/Layout/Header";
 import Footer from "./components/user/Layout/Footer";
 import Login from "./pages/user/Login";
+import LoginAd from "./pages/admin/Login";
 import ProductViewModal from "./components/user/ProductViewModal";
 
 function App() {
@@ -16,11 +17,15 @@ function App() {
       <div className="container">
         <main className="main">
           <Routes>
+            {/* User */}
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/catalog/:slug" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+
+            {/* Admin */}
+            <Route path="/admin/login" element={<LoginAd />} />
           </Routes>
           <ProductViewModal />
         </main>
